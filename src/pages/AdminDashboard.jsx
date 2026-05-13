@@ -14,15 +14,7 @@ const AdminDashboard = () => {
 
   const token = localStorage.getItem("adminToken");
 
-  useEffect(() => {
-    if (!token) {
-      navigate("/admin");
-      return;
-    }
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
+  const fetchData = React.useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -45,7 +37,15 @@ const AdminDashboard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [token]);
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/admin");
+      return;
+    }
+    fetchData();
+  }, [token, navigate, fetchData]);
 
   const handleDelete = async (type, id) => {
     if (!confirm("Are you sure you want to delete this record?")) return;
@@ -55,7 +55,7 @@ const AdminDashboard = () => {
         headers: { Authorization: token },
       });
       fetchData();
-    } catch (err) {
+    } catch (_err) {
       alert("Failed to delete.");
     }
   };

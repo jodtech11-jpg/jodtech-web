@@ -31,7 +31,7 @@ const AdminLogin = () => {
       } else {
         setError("Invalid username or password.");
       }
-    } catch (err) {
+    } catch (_err) {
       setError("Server unreachable. Make sure the backend is running.");
     } finally {
       setLoading(false);

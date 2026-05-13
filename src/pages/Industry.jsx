@@ -123,7 +123,7 @@ const Industries = () => {
                  {/* Description Content */}
                  <div className="relative mt-auto p-10 md:p-14 text-green-50 z-10 w-full">
                     <span className="inline-block px-4 py-1.5 mb-6 text-xs md:text-sm font-black tracking-widest text-green-600 bg-dg-700/40 backdrop-blur-md rounded-full uppercase border border-dg-700/30">
-                      Sector {activeIndex + 1} // {industries.length}
+                      Sector {activeIndex + 1} / {industries.length}
                     </span>
                     <h3 className="text-4xl md:text-6xl font-black mb-4 tracking-tighter">
                       {industries[activeIndex].name}
